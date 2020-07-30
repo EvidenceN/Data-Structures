@@ -2,6 +2,9 @@
 A queue is a data structure whose primary purpose is to store and
 return elements in First In First Out order. 
 
+data is added to the tail
+data is taken from the head
+
 1. Implement the Queue class using an array as the underlying storage structure.
    Make sure the Queue tests pass.
 2. Re-implement the Queue class, this time using the linked list implementation
@@ -30,7 +33,7 @@ from collections import deque
 class Queue:
     def __init__(self):
         self.size = 0
-        self.storage = deque([])
+        self.storage = []
     
     def __len__(self):
         return len(self.storage)
@@ -39,7 +42,7 @@ class Queue:
         return self.storage.append(value)
 
     def dequeue(self):
-        return self.storage.popleft()
+        return self.storage.pop(0)
 
 import sys
 sys.path.append('../')
@@ -47,7 +50,7 @@ sys.path.append('../')
 from singly_linked.singly_linked_list import LinkedList, Node
 
 # implementing queue using linked list
-# Using an a "linked list" to do stack
+# Using an a "linked list" to do queue
 
 linked = LinkedList()
 node = Node()
@@ -68,3 +71,23 @@ class Queuelink:
     def dequeue(self):
         # Dequeing first item would be removing the head
         return self.storage.remove_head()
+
+
+# doing queue using deque from python collections. 
+
+class Queuelinkdeque:
+    def __init__(self):
+        self.size = 0
+        self.storage = deque([])
+
+    def __len__(self):
+        # get the length of the linked list
+        return len(self.storage)
+
+    def enque(self, value):
+        # add the value to the head
+        return self.storage.appendleft(value)
+
+    def dequeue(self):
+        # Dequeing first item
+        return self.storage.popleft()

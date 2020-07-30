@@ -2,6 +2,8 @@
 A stack is a data structure whose primary purpose is to store and
 return elements in Last In First Out order. 
 
+Data is added to tail, and taken from tail
+
 * Should have the methods: `push`, `pop`, and `len`.
    * `push` adds an item to the top of the stack.
    * `pop` removes and returns the element at the top of the stack
@@ -61,3 +63,25 @@ class Stacklink:
         # first get the value of the current tail
         value = node.get_value()
         next_tail = node.set_next(value)
+
+
+# Using an a "linked list" to do stack VERSION 2
+
+from collections import deque
+
+class Stacklinkdeque:
+    def __init__(self):
+        self.size = 0
+        self.storage = deque([])
+
+    def __len__(self):
+        # get the length of the linked list
+        return len(self.storage)
+
+    def push(self, value):
+        # add the value to the tail
+        return self.storage.append(value)
+
+    def pop(self):
+        # remove the last item enterned
+        return self.storage.pop()
